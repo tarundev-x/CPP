@@ -1,8 +1,6 @@
-class Solution 
-{
+class Solution {
 public:
-    int romanToInt(string s) 
-    {
+    int romanToInt(string s) {
        
         int n=s.size();
          vector<int> v;
@@ -27,20 +25,18 @@ public:
     }
     int j=0;
     int sum=0;
-    for(int j=0;j<v.size();j++)
-   {
+    for(j=0;j<v.size()-1;j++)
+    {
      if(v[j]<v[j+1])
-      {
+     {
          sum=sum+v[j+1]-v[j];
-         //j++;
-      }
-    else
-       {
-         sum=sum+v[j];
-       }
+         j++;
+     }
+        else
+        sum=sum+v[j];
     }
-        
-   
+    if(j!=v.size())
+        sum=sum+v[v.size()-1];
     return sum;
   }
         
