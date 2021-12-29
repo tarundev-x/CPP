@@ -1,3 +1,6 @@
+bool matching(string s)
+{
+    if(s=='('&s==')' ||s=='{' &s=='}'||s=='[' & s==']') return true;
 bool isBalanced(string s)
 {
     stack<char>st;
