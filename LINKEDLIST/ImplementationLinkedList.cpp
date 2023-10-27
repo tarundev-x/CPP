@@ -38,6 +38,45 @@ display(head);
 
 
 //output  1 2 3
+///modification using constructor
+/////////////////////////////////////////////////////////////////////
+
+#include <iostream>
+using namespace std;
+struct Listnode
+{
+    int data;
+    Listnode* next;
+    Listnode(int d)
+    {
+        data=d;
+        next=NULL;
+    }
+};
+void display(Listnode* head)
+{
+    while(head!=NULL)
+    {
+        cout<<head->data<<" ";
+        head=head->next;
+    }
+}
+int main() {
+Listnode *head=new Listnode(1);;
+Listnode *first=new Listnode(2);;
+Listnode *second=new Listnode(3);;
+
+
+
+head->next=first;
+
+first->next=second;
+
+second->next=NULL;
+display(head);
+}
+
+///////////////////////////////////////////////////////////////////////////
 
 //Another approach
 /////////////////////////////////
