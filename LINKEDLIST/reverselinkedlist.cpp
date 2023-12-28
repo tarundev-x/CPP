@@ -4,48 +4,87 @@ struct Node
 {
     int data;
     Node *next;
-};
- void display(Node *head)
- {
-     while(head!=NULL)
-     {
-         cout<<head->data<<" ";
-         head=head->next;
-    }
-}
-Node* reverse_list(Node* head)
-{
-    Node* temp=NULL;
-    while(head)
+    Node(int d)
     {
-        Node* newnode=head->next;
-        head->next=temp;
-        temp=head;
-        head=newnode;
+        data = d;
+        next = NULL;
     }
-    return temp;
+};
+
+
+
+void InsertTail(Node*&head,int d)
+{
+    Node*newNode=new Node(d);
+    if(head==NULL)
+    {
+        newNode->next=head;
+        head=newNode;
+    }
+    
+    Node*temp=head;
+    
+    while(temp->next!=NULL)
+    {
+        temp=temp->next;
+    }
+    temp->next=newNode;
+    
 }
-int main() {
-	Node *head=NULL;
-	Node *first=NULL;
-	Node *second=NULL;
-	Node *third=NULL;
-	
-	head=new Node;
-	first=new Node;
-	second=new Node;
-	third=new Node;
-	
-	head->data=1;
-	head->next=first;
-	first->data=2;
-	first->next=second;
-	second->data=3;
-	second->next=third;
-	third->data=4;
-	third->next=NULL;
-	
-	Node*newhead=reverse_list(head);
-	//cout<<newhead->data;
-	display(newhead);
+
+
+
+
+bool search(Node*head,int key)
+{
+    Node*temp=head;
+    while(temp!=NULL)
+    {
+        if(temp->data==key)
+        {
+            return true;
+        }
+        temp=temp->next;
+    }
+    return false;
+}
+
+void reverseLinkedlist(Node*&head)
+{
+    Node*cur=head;
+    Node*prevnode=NULL;
+    Node*nextnode=head;
+   while(nextnode!=NULL)
+   {
+       nextnode=cur->next;
+       cur->next=prevnode;
+       prevnode=cur;
+       cur=nextnode;
+   }
+ head=prevnode;
+    
+}
+
+
+void display(Node*head)
+{
+    Node*temp=head;
+    while(temp!=NULL)
+    {
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+    cout<<endl;
+}
+int main()
+{
+    Node *head = new Node(1);
+  
+    InsertTail(head,2);
+    InsertTail(head,3);
+    InsertTail(head,4);
+
+    display(head);
+    reverseLinkedlist(head);
+    display(head);
 }
